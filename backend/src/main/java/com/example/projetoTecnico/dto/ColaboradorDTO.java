@@ -3,8 +3,8 @@ package com.example.projetoTecnico.dto;
 public class ColaboradorDTO {
 
     private String nome;
-    private int telefone;
-    private int cep;
+    private String telefone;
+    private String cep;
     private String rua;
     private String bairro;
     private String cidade;
@@ -18,19 +18,19 @@ public class ColaboradorDTO {
         this.nome = nome;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
-    public int getCep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
 

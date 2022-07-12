@@ -3,7 +3,7 @@ package com.example.projetoTecnico.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "colaborador")
+@Table(name = "tb_colaborador")
 public class Colaborador {
 
     @Id
@@ -11,8 +11,8 @@ public class Colaborador {
     private Long id;
 
     private String nome;
-    private int telefone;
-    private int cep;
+    private String telefone;
+    private String cep;
     private String rua;
     private String bairro;
     private String cidade;
@@ -22,7 +22,7 @@ public class Colaborador {
 
     }
 
-    public Colaborador(Long id, String nome, int telefone, int cep, String rua, String bairro, String cidade, String uf) {
+    public Colaborador(Long id, String nome, String telefone, String cep, String rua, String bairro, String cidade, String uf) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
@@ -41,19 +41,19 @@ public class Colaborador {
         this.nome = nome;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
-    public int getCep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
 
@@ -87,5 +87,13 @@ public class Colaborador {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
