@@ -2,10 +2,12 @@ import React from 'react';
 import axios, { AxiosRequestConfig } from 'axios';
 import './styles.css';
 import { API_URL, BASE_URL } from '../../utils/requests';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Form() {
     async function handleCep(event: any) {
-        if (event.target.value != "") {
+        if (event.target.value !== "") {
             let rua = document.getElementById("rua") as any;
             let bairro = document.getElementById("bairro") as any;
             let cidade = document.getElementById("cidade") as any;
@@ -13,7 +15,7 @@ function Form() {
 
             axios.get(`${API_URL}${event.target.value}/json/`)
                 .then(response => {
-                    if (response.data != null) {
+                    if (response.data !== null) {
                         rua.value = response.data.logradouro;
                         bairro.value = response.data.bairro;
                         cidade.value = response.data.localidade;
@@ -27,9 +29,30 @@ function Form() {
 
     };
 
+    function validForm() {
+        let nome = document.getElementById("nome") as any;
+        let telefone = document.getElementById("telefone") as any;
+        let rua = document.getElementById("rua") as any;
+        let bairro = document.getElementById("bairro") as any;
+        let cidade = document.getElementById("cidade") as any;
+        let uf = document.getElementById("uf") as any;
+
+        if (nome.value === "" || telefone.value === "" || 
+        rua.value === "" || bairro.value === "" || 
+        cidade.value === "" || uf.value === "") {
+            return false;
+        }
+        return true;
+    }
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 
         event.preventDefault();
+
+        if (!validForm()) {
+            toast.warn("Preencha todos os campos!");
+            return;
+        }
 
         const nome = (event.target as any).nome.value;
         const telefone = (event.target as any).telefone.value;
@@ -54,6 +77,16 @@ function Form() {
                 uf: uf
             }
         }
+
+        axios(config).then(response => {
+            console.log(response.data);
+            toast.success(response.data);
+        })
+        .catch ((error) => {
+            console.log(error);
+            toast.error("Erro ao cadastrar colaborador.")
+        });
+
     }; 
 
     return (
@@ -74,7 +107,6 @@ function Form() {
                         <label htmlFor="cep">CEP</label>
                         <input id="cep" name="cep" type="text" onBlur={handleCep} />
                     </div>
-
                     <div className="form-group_line">
                         <label htmlFor="rua">Rua</label>
                         <input id="rua" name="rua" type="text" />
@@ -94,6 +126,7 @@ function Form() {
                     <div className="divButtons">
                         <button type="submit">Salvar</button>
                         <button type="reset">Limpar Dados</button>
+                        <ToastContainer />
                     </div>
                 </form>
             </div>

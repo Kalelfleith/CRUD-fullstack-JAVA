@@ -1,4 +1,3 @@
-import React from "react";
 import {
   BrowserRouter,
   Routes,
@@ -7,6 +6,7 @@ import {
 import Form from "./components/Form";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
+import Registers from "./components/Registers";
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/add" element={<Form />} />
+          <Route path="/listing" element={<Registers/>}/>
         </Routes>
     </BrowserRouter>
   );
