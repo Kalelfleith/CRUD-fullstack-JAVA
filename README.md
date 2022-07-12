@@ -18,9 +18,11 @@ CRUD de Cadastro de Colaborar
 
 ## Script do Banco de Dados:
 
-* Este script criará as tabelas necessárias.
+* Este script criará o banco e as tabelas necessárias.
 * A estrutura criada não deve ser alterada!
 
+`-- -----------------------------------------------------`<br/>
+`CREATE DATABASE projetotecnico;`<br/>
 `-- -----------------------------------------------------`<br/>
 `-- Table Colaborador`<br/>
 `-- -----------------------------------------------------`<br/>
