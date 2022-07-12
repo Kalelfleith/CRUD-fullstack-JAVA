@@ -14,7 +14,7 @@ CRUD de Cadastro de Colaborar
 
 ## APIs
 
-> Utilizado API https://viacep.com.br/ para consulta o CEP e preenchar os campos do formulário automaticamente.
+> Utilizado API https://viacep.com.br/ para consultar o CEP e preenchar os campos de endereço no formulário automaticamente.
 
 ## Script do Banco de Dados:
 
